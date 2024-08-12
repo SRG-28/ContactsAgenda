@@ -1,0 +1,26 @@
+.masthead{
+    background: url("../images/masthead.png") no-repeat center;
+    height: 462px;
+    background-size: cover;
+   }
+
+.rewardingContent {
+    margin-top:10px;
+   }
+
+   .rewardingImg {
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+   }
+
+.rewardingContent,.hiredContent,.workEfficiency,.getPaid{
+    margin-top:10px;
+   }
+
+.rewardingImg,.hiringImg,.messagingImg,.paidImg {
+    width: 75%;
+    margin: 0 auto;
+    display: block;
+   }
+

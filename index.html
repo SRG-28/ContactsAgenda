@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- index.html -->
+<html lang="en">
+<head>
+  <title>Tarea 3 Sofia Rubie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router"></script>
+  <script src="https://unpkg.com/http-vue-loader"></script>
+</head>
+
+<body>
+<div id="app" class="container">
+  <br>
+  <h2>A web page</h2>
+  <div class="row">
+    <div class="six columns">
+      <h4>All Contacts</h4>
+      <ul>
+        <li v-for="(contact, index) in contacts" :key="index">{{ contact.name }} - {{ contact.work }} - {{ contact.mobile }} - {{ contact.email }} - {{ contact.address }}</li>
+      </ul>
+      <button type="" class="button-primary">Add</button>
+    </div>
+    <div class="six columns">
+      <form @submit.prevent="saveData">
+        <label for="name">Name:</label>
+        <input type="text" id="name" v-model="name" required>
+        <label for="work">Work:</label>
+        <input type="text" id="work" v-model="work" required>
+        <label for="mobile">Mobile:</label>
+        <input type="tel" id="mobile" v-model="mobile" pattern="[0-9]{4}-[0-9]{4}" required>
+        <br><small>Format: 8345-7898</small><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="email" required>
+        <label for="address">Address:</label>
+        <textarea type="text" id="address" v-model="address" rows="5" style="width: 60%;" required></textarea>
+        <br>
+        <button type="submit" class="button-primary">Save</button>&nbsp;&nbsp;&nbsp;
+        <button @click="deleteData" class="button">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        contacts: [],
+        name: "",
+        work: "",
+        mobile: "",
+        email: "",
+        address: ""
+      }
+    },
+    methods: {
+      saveData() {
+        this.contacts.push({
+          name: this.name,
+          work: this.work,
+          mobile: this.mobile,
+          email: this.email,
+          address: this.address
+        });
+        this.name = "";
+        this.work = "";
+        this.mobile = "";
+        this.email = "";
+        this.address = "";
+      },
+      deleteData() {
+        this.name = "";
+        this.work = "";
+        this.mobile = "";
+        this.email = "";
+        this.address = "";
+      }
+    }
+  }).mount('#app')
+</script>
+</body>
+</html>
+
+
+  
+  
